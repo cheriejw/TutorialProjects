@@ -29,3 +29,6 @@ Goal of this tutorial was to understand more about APIs and familiarize myself w
 ### Rabbitholes
 - [Contollers and Conventions:](https://www.red-gate.com/simple-talk/dotnet/asp-net/asp-net-mvc-controllers-and-conventions/)
     > For each request that hits the site, ASP.NET MVC figures out the name of the controller class that will handle the request and manages to create a new instance of that class.
+
+### Observations
+- Building the solution outputted a dll file and API server was not running. Running would also run the index.html file. *How do I run just the API server so I could make calls to it? Is the dll file the contents of the API?*
