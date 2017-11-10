@@ -21,7 +21,7 @@ Goal of this tutorial was to understand more about APIs (Application Programming
 
 
 - Checkout browser's developer tools to view HTTP traffic.
-    *This part wasn't mandatory, but good to help understand a bit more if you havent already. Could see the request and response headers to see what was sent and what was recieved, did not go into this too much. They also recommended Fiddler for debugging.*
+    *This part wasn't mandatory, but good to help understand a bit more if you havent already. Could see the request and response headers to see what was sent and what was recieved, did not go into this too much. Also noted that it is browser functionality to serialize data to json? Recommended Fiddler for debugging, another day.*
 
 *The file structure/organization and naming conventions are all just seem to be strong recommendations. Interesting to see all of the recommended optional coding styles, though I don't fully understand the reasoning for all of it yet due to lack of experience*
 
