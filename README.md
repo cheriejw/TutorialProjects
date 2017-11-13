@@ -12,7 +12,7 @@ This repository is mainly for myself to reference (in my attempt to progress), s
 ### Tutorial Queue
 *Tutorial selection based on topics that are relevant to current employment to increase productivity for work and life.*
 - https://insidethecpu.com/2015/07/17/microservices-in-c-part-1-building-and-testing/
-- https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/
+- https://www.asp.net/web-forms
 - https://docs.microsoft.com/en-us/aspnet/web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 - https://www.mssqltips.com/sqlservertutorial/160/sql-server-stored-procedure-tutorial/
 - http://dapper-tutorial.net/stored-procedure
