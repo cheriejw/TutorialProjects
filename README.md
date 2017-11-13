@@ -6,7 +6,8 @@ This repository is mainly for myself to reference (in my attempt to progress), s
 ### Table of Contents *(literally)*
 | FileName | Description | Date |
 | --- | ----------- | ---- |
-| **CSSOAPAPI**  | Misnamed for now, just a **basic API in C# (.NET framework)** to warm up to it. | 11/08/2017
+| **CSharp/CSWEBAPI2**  | Just a **basic API in C# (.NET framework)** to warm up to it. | 11/08/2017
+| **CSharp/CSMICROSERVICE** | |11/13/2017
 
 ### Tutorial Queue
 *Tutorial selection based on topics that are relevant to current employment to increase productivity for work and life.*
