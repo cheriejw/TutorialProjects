@@ -17,4 +17,5 @@ This repository is mainly for myself to reference (in my attempt to progress), s
 - https://docs.microsoft.com/en-us/aspnet/web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 - https://www.mssqltips.com/sqlservertutorial/160/sql-server-stored-procedure-tutorial/
 - http://dapper-tutorial.net/stored-procedure
+- https://support.smartbear.com/readyapi/docs/soapui/tutorial/your-first-test/create-project.html
 
