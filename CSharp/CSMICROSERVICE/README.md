@@ -1,5 +1,5 @@
-# MICROSERVICES WITH C# AND RABBITMQ
-*[from Inside the CPU - Paul Mooney](https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/)*
+# MICROSERVICES HOSTED IN DOCKER
+*[from Microsoft](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/microservices)*
 
 Goal of this tutorial was to understand more about microservices and familiarize myself with working in Visual Studio and C# code as it will be utilized at my current employment.
 
@@ -27,7 +27,7 @@ Goal of this tutorial was to understand more about microservices and familiarize
 
 ### Unknown Terms (Research Notes)
 *(Definitions from research are only as accurate as I understand them to be, some copy-pasta and references; Please correct me if I am wrong.)*
-- **(Global) ASAX file:** ASAX (Active Server Page) files are specific to .NET framework. [Global.asax](https://msdn.microsoft.com/en-us/library/1xaas8a2(v=vs.71).aspx) acts as an optional event handler for "application-level" events from ASP.Next or HttpModules (1 request to your application = 1 HTTP module call). Derived from HttpApplication base class. Not available externally.
+- **Protobuf:** 
 
 - **Namespace:** Named space where your application resides. Purpose is to provide C# compiler with context for named information in program file. Namespaces are in References as well as your source folders. They can be accessed with "using" keyword or typing the name.path. Nested namespaces are also a thing usually with companies with product series, I used nested namespace in the tutorial.
     ```c
@@ -41,6 +41,7 @@ Goal of this tutorial was to understand more about microservices and familiarize
 ### Rabbitholes
 - [Monolithic vs. Microservices:](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
     > "...it is important to understand Monolithic architecture since it is the basis for microservices architecture where each service by itself is implemented according to monolithic architecture."
+- https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/
 
 ### Un-concreate Personal Observations
 - Building the solution outputted a dll file and API was not running. Running would also run the index.html file. At work the APIs were services running. Maybe from the other layers pulling in the dll files and calling it creating an instance of it? (Lack of better wording for now.) *How do I run just the API server so I could make calls to it? Is the dll file the contents of the API?*
