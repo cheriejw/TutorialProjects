@@ -3,48 +3,45 @@
 
 Goal of this tutorial was to understand more about microservices and familiarize myself with working in Visual Studio and C# code as it will be utilized at my current employment.
 
-### Procedure with Notes
-- Opened VS and created a new empty ASP.NET Web Application under Visual C# > Web with folders and core references for Web API.
-    *Compared to a new empty ASP.NET Web Application without the WebAPI folders and core references, this contained an additional 4 folders (App_Data, App_Start, Controllers, Models) and a "Global.asax" file. Under Resources folder added: System.Web.Http, System.Web.Http.Webhost, System.Net.HttpFormatting, System.Net.Http and Newtonsoft.Json. In App_Start there was a WebApiConfig.cs file with Register method that appeared to be a Router configuration with default "api/{controller}/{id}" template.*
+### Difficulties
+This tutorial required Docker, the link in the tutorial shows you to install DockerCE which requires Hyper-V for Windows, which I do not have seeing I am running on a home machine. So I had to install [Docker ToolBox](https://www.docker.com/products/docker-toolbox) instead with VirtualBox.
 
-- Added a (Model) Class in the Models folder.
-    *The class was a namespace which was <ApplicationName>.Models. (All code seem to be wrapped in namespace) I placed a class in the namespace. The class contained 4 properties (AutoProperties). This file appears to be a blueprint object.*
+I had to change the version in the global.json file from the default
+```javascript
+{
+  "sdk": {
+    "version": "1.0.0-rc4-004771"
+  }
+}
+```
+to my current dotnet version which was found with the following command
+```bash 
+$ dotnet --info
+The specified SDK version [1.0.0-rc4-004771] from global.json [C:\Users\Cherie Woo\TutorialProjects\CSharp\CSMICROSERVICE\global.json] not found; install specified SDK version
 
-- Added an Empty Web API Controller in the Controllers folder. Named it "ProductsController". 
-    *Tutorial said to copy and paste code. The code was again inside a nested namespace and contained one class that [inherits from](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/inheritance) (:) an ApiController class. Class consisted of two methods and a field. The field in the view used the model we created earlier to be the object where the data is stored (in an application this is where the database/external data source would be put into, but we hard coded values). One of the methods would return an IEnumerable<Product> with all the products and the other would return an IHttpActionResult of the product object of given id.*
+Microsoft .NET Core Shared Framework Host
 
-- Added a simple UI (HTML page to the project) to interact with the API.
-    *This part was just copy and pasted and they did explain more in the tutorial but I was not particularly interested in what the front-end was doing to render data but rather how it was getting the results. How did the API know that when I hit api/products I was refering to which of the two methods? [It was all in the default WebApiConfig.cs file.](https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api) It appears that they just matched the id to the action (what they call the methods in the controller) parameter to determine which to use, however you could also match it in the api/{controller}/{action}/{id} fashion as well to be more specific.*
-    >After some playing around I found that you must name it <controllername>Controller and in the WebApiConfig it will pick up <controllername> as part of the route. That is how the controller name was set. There should be a way around this, seems strickt for a programming language... (but wait... its a framework? <.NET>)
-    > Just to confirm my theory that it matched {id} to the action parameter, I made both actions in the controller have an int parameter, sure enough I got this exception message: Multiple actions were found that match the request: GetAllProducts on type TestWebApplication.Controllers.ProductzController GetProduct on type TestWebApplication.Controllers.ProductzController. I also got the same error changing int to string on one of them. So they only counted number of parameters it appears. 
-    > Changing the WebApiConfig file to api/{controller}/{action}/{id} did automatically take the methods in the controller as an action name.
+  Version  : 2.0.0
+  Build    : e8b8861ac7faf042c87a5c2f9f2d04c98b69f28d
+```
+The current version happened to be 2.0.0 so I put that in my global.json. Reading about .NET things are usually backwards compatable so I am hoping it is the case for this too.
+note to self: read first. check dates for most current.
 
+Reading more into the tutorial it does have a note that says the following: 
+> Note: Starting with .NET Core 2.0, you do not have to run dotnet restore because it is run implicitly as part of dotnet build or dotnet run. It is still a valid command in certain scenarios where doing an explicit restore makes sense, such as continuous integration builds in Visual Studio Team Services.
 
-- Checkout browser's developer tools to view HTTP traffic.
-    *This part wasn't mandatory, but good to help understand a bit more if you havent already. Could see the request and response headers to see what was sent and what was recieved, did not go into this too much. Also noted that it is browser functionality to serialize data to json? Recommended Fiddler for debugging, another day.*
+Which is wonderful they didn't put it sooner, or maybe I should read ahead.
 
-*The file structure/organization and naming conventions are all just seem to be strong recommendations. Interesting to see all of the recommended optional coding styles, though I don't fully understand the reasoning for all of it yet due to lack of experience*
+**Actually this dotnet run failed and I looked more into the [generator](https://github.com/OmniSharp/generator-aspnet)... It appears that by default it uses the lts version. The correct command to run for this was: `yo aspnet --version-current`**
+
+This doesn't work either. Because this scaffold is old, unfortunate. Ended up using `dotnet new`. [More on it here.](https://blogs.msdn.microsoft.com/dotnet/2017/08/14/announcing-net-core-2-0/)... [(WeatherMicroservice_dotnetnew)](https://github.com/cheriejw/TutorialProjects/tree/master/CSharp/CSMICROSERVICE/WeatherMicroservice_dotnetnew) and because I really wanted to do the tutorial I also... Ended up installing [the .net version](https://github.com/dotnet/core/blob/master/release-notes/download-archives/rc4-download.md) that was available a few days after this tutorial was published. [(WeatherMicroservice)](https://github.com/cheriejw/TutorialProjects/tree/master/CSharp/CSMICROSERVICE/WeatherMicroservice)
 
 ### Unknown Terms (Research Notes)
 *(Definitions from research are only as accurate as I understand them to be, some copy-pasta and references; Please correct me if I am wrong.)*
 - **Protobuf:** 
 
-- **Namespace:** Named space where your application resides. Purpose is to provide C# compiler with context for named information in program file. Namespaces are in References as well as your source folders. They can be accessed with "using" keyword or typing the name.path. Nested namespaces are also a thing usually with companies with product series, I used nested namespace in the tutorial.
-    ```c
-    namespace TestWebApplication.Models
-    ```
-    
-- **Properties and Fields:** [Properties expose fields.](https://stackoverflow.com/questions/295104/what-is-the-difference-between-a-field-and-a-property-in-c) Used AutoProperties in Model class (started at C# 3.0) which generates private field for you. Fields stores the actual data. [Properties](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/using-properties) have get and set and sometimes can do calculations or become [method-like](https://msdn.microsoft.com/en-us/library/ms229054(v=vs.100).aspx). Property can only have 2 code blocks at a maximum, get and/or set. Properties are not variables.
-
-- **(Web Debugging) Proxy:** This is what Fiddler is. A [proxy (server)](http://whatismyipaddress.com/proxy-server) is just something that acts like a middleman/broker. So before the traffic comes in, it will go to the proxy first, or before it leaves, it will go through the proxy first.
-
 ### Rabbitholes
 - [Monolithic vs. Microservices:](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
     > "...it is important to understand Monolithic architecture since it is the basis for microservices architecture where each service by itself is implemented according to monolithic architecture."
+
 - https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/
-
-### Un-concreate Personal Observations
-- Building the solution outputted a dll file and API was not running. Running would also run the index.html file. At work the APIs were services running. Maybe from the other layers pulling in the dll files and calling it creating an instance of it? (Lack of better wording for now.) *How do I run just the API server so I could make calls to it? Is the dll file the contents of the API?*
-    > Went to work the next day and ask a little about what an API would refer to as "application-level" someone mentioned the [OSI model](https://en.wikipedia.org/wiki/OSI_model) which made sense to me. Also the answer was because I had no server. At work there was the IIS serving the dll making it the API I knew of. I did not have any servers serving my API in this tutorial, but when I ran it with the index, I guess it took the methods from the dll file?
-
-
