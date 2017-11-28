@@ -36,12 +36,15 @@ Which is wonderful they didn't put it sooner, or maybe I should read ahead.
 
 This doesn't work either. Because this scaffold is old, unfortunate. Ended up using `dotnet new`. [More on it here.](https://blogs.msdn.microsoft.com/dotnet/2017/08/14/announcing-net-core-2-0/)... [(WeatherMicroservice_dotnetnew)](https://github.com/cheriejw/TutorialProjects/tree/master/CSharp/CSMICROSERVICE/WeatherMicroservice_dotnetnew) and because I really wanted to do the tutorial I also... Ended up installing [the .net version](https://github.com/dotnet/core/blob/master/release-notes/download-archives/rc4-download.md) that was available a few days after this tutorial was published. [(WeatherMicroservice)](https://github.com/cheriejw/TutorialProjects/tree/master/CSharp/CSMICROSERVICE/WeatherMicroservice)
 
+> Starting with .NET Core 2.0, you don't have to run dotnet restore because it's run implicitly as part of dotnet build or dotnet run. It's still a valid command in certain scenarios where doing an explicit restore makes sense, such as continuous integration builds in Visual Studio Team Services.
+
 ### Unknown Terms (Research Notes)
 *(Definitions from research are only as accurate as I understand them to be, some copy-pasta and references; Please correct me if I am wrong.)*
-- **Protobuf:** 
+- [**Protobuf:**](https://en.wikipedia.org/wiki/Protocol_Buffers) a way of serializing structured data. Designed by Google to be smaller and faster than XML. 
 
 ### Rabbitholes
 - [Monolithic vs. Microservices:](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
     > "...it is important to understand Monolithic architecture since it is the basis for microservices architecture where each service by itself is implemented according to monolithic architecture."
 
-- https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/
+- [Microservices with C and RabbitMQ](https://insidethecpu.com/2015/05/22/microservices-with-c-and-rabbitmq/)
+    > "In its simplest form, a Microservice consists of an event-listener and a message-dispatcher. The event-listener polls a service-bus – generally a durable message-queue – and handles incoming messages. Messages consist of instructions bound in metadata and encoded in a data-interchange format such as JSON, or Protobuf."
