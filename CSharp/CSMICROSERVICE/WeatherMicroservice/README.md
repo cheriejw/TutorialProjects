@@ -1,39 +1,36 @@
-# Welcome to ASP.NET Core
+After running `dotnet run` after the `dotnet build` and `dotnet restore`, I could visit http://localhost:5000 to see my expected 'hello world' scaffold app.
 
-We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
+Speaking of the Startup.cs file and the project.json file (obj/project.assets.json) :
+> The ConfigureServices method describes the services that are necessary for this application. You're building a lean microservice, so it doesn't need to configure any dependencies. **The Configure method configures the handlers for incoming HTTP Requests.**
 
-You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
+Went into extension nullable methods which reminded me of using the [Convert.toString() vs string.toString()](https://stackoverflow.com/questions/2828154/difference-between-convert-tostring-and-tostring) I encountered today.
 
-## This application consists of:
+I had `dotnet run` serving localhost at port 5000 and tried to stop it and rebuild, it continued to run in the background and I had to go to Task Manager to close proceess: 'dotnet'. *Rebuild was required to test the new changes after completing the parsing step.*
 
-*   Sample pages using ASP.NET Core MVC
-*   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
+I got an odd error: `Failed to create prime the NuGet cache. new failed with: -2147352571`, that upon Googling lead me to [this](https://github.com/dotnet/cli/issues/7812), global.json file may be unnecessary. Error was not stopping me from running application in anycase.
 
-## How to
+Running with no query does not crash app because of the nullable likely. In convergence application at work, we used an IHttpContext to "program network communications".
 
-*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
-*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
-*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
-*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
-*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
-*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
-*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
+Found the bug again where after hitting Ctrl+C process was still running in background.
 
-## Overview
+Had to run `dotnet restore` again after adding the nuget package for json package parsing, then `dotnet build`.
+> Starting with .NET Core 2.0, you don't have to run dotnet restore because it's run implicitly as part of dotnet build or dotnet run
 
-*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
-*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
-*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
-*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
-*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
-*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
-*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
 
-## Run & Deploy
+### Unknown Terms (Research Notes)
+**Convert.toString() vs .toString() :**
+> "In most cases Convert will call ToString on the value but in the general case of calling it on an object Convert actually defers to IConvertible if it is implemented.  This is important because IConvertible does not generally map to ToString.  ToString is generally used for a quick and friendly string representation of an object but IConvertible is designed for conversion so the output can vary.
+> Additionally Convert generally calls the ToString overload of the primitives that pass the format provider.  This means that, in some cases, the returned value of Convert will be culture-specific whereas the parameterless ToString() version may not." 
 
-*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
-*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
-*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
+[**Interpolated Strings :**](http://geekswithblogs.net/BlackRabbitCoder/archive/2015/03/26/c.net-little-wonders-string-interpolation-in-c-6.aspx) An cleaner way to create strings. [MSDN here.](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings)
 
-We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+**Telemetry :** Telemetry is an automated communications process by which measurements and other data are collected at remote or inaccessible points and transmitted to receiving equipment for monitoring.
+
+### Rabbitholes
+- [Generic Interfaces](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-interfaces)
+
+### Un-concreate Personal Observations
+- A microservice is an API?
+
+### Work experiences in same timeline
+- Enum Types, casting to int returns value.
