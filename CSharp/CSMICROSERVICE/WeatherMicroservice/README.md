@@ -13,8 +13,11 @@ Running with no query does not crash app because of the nullable likely. In conv
 
 Found the bug again where after hitting Ctrl+C process was still running in background.
 
-Had to run `dotnet restore` again after adding the nuget package for json package parsing, then `dotnet build`.
+Had to run `dotnet restore` again after adding the nuget package for json package parsing, then `dotnet build`. 
 > Starting with .NET Core 2.0, you don't have to run dotnet restore because it's run implicitly as part of dotnet build or dotnet run
+
+`using Newtonsoft.Json;`
+
 
 
 ### Unknown Terms (Research Notes)
