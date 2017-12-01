@@ -31,15 +31,14 @@
 - **brownout:** Restriction of service. [Heroku brownout](https://status.heroku.com/incidents/1193)
     > Heroku will be performing a "brownout" of the V2 Legacy API. This is in preparation for the complete shutdown of the V2 Legacy API scheduled for Monday, June 26th, 2017. Please see our API v2 sunset announcement for more information. During this time, requests to the V2 Legacy API will respond with 410 Gone.
 - **infastructure:** [Framework.](http://searchdatacenter.techtarget.com/definition/infrastructure) Cloud Infastructure. A software layer, on which you build ontop of. IaaS. Between application layer and physical server. Software on the server?
+- [Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
+    > A Procfile is a mechanism for declaring what commands are run by your application’s dynos on the Heroku platform.
 
 ### Rabbitholes
 - [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing)
     > It declares that this process type will be attached to the HTTP routing stack of Heroku, and receive web traffic when deployed.
 - **Chrome Unsafe Ports:** Tried to use port 6000 and found it threw and odd error. [List of unsafe ports](https://superuser.com/questions/188058/which-ports-are-considered-unsafe-on-chrome), and the [reason](https://jazzy.id.au/2012/08/23/why_does_chrome_consider_some_ports_unsafe.html).
     > Open proxies are considered quite dangerous. No piece of software should allow itself to be used as an open proxy. It's not so much about Chrome preventing malicious activity, as it is about Chrome ensuring that it is not a hole in an otherwise secured network. The problem here is the design of HTML/HTTP, where browsers are so obliging in opening arbitrary connections to anything and sending data on behalf of an attacker who is not even on the same network. That is a fundamental security issue that should be addressed.
-
-[Heroku Procfile](https://devcenter.heroku.com/articles/procfile)
-> A Procfile is a mechanism for declaring what commands are run by your application’s dynos on the Heroku platform.
 
 ### Un-concreate Personal Observations
 
