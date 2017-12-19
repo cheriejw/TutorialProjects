@@ -6,11 +6,12 @@ This repository is mainly for myself to reference (in my attempt to progress), s
 ### Table of Contents *(literally)*
 | FileName | Description | Date |
 | --- | ----------- | ---- |
-| **CSharp/CSWEBAPI2**  | Just a **basic API in C# (.NET framework)** to warm up to it. | 11/08/2017
+| **CSharp/CSWEBAPI2**  | Just a **basic API in C# (.NET framework)** to warm up to it. Uses a Controller and a Model | 11/08/2017
 | **CSharp/CSMICROSERVICE** | |11/13/2017
 
 ### Tutorial Queue (Not filtered yet)
 *Tutorial selection based on topics that are relevant to current employment to increase productivity for work and life.*
+- https://docs.microsoft.com/en-us/dotnet/framework/windows-services/walkthrough-creating-a-windows-service-application-in-the-component-designer
 - https://medium.com/@cameronbwhite90/deploy-react-webpack-to-digital-ocean-with-nginx-and-github-b83d1cf4be0b
 - https://docs.microsoft.com/en-us/aspnet/web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 - https://insidethecpu.com/2015/07/17/microservices-in-c-part-1-building-and-testing/
