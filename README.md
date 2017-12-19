@@ -11,6 +11,7 @@ This repository is mainly for myself to reference (in my attempt to progress), s
 
 ### Tutorial Queue (Not filtered yet)
 *Tutorial selection based on topics that are relevant to current employment to increase productivity for work and life.*
+- https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package
 - https://docs.microsoft.com/en-us/dotnet/framework/windows-services/walkthrough-creating-a-windows-service-application-in-the-component-designer
 - https://medium.com/@cameronbwhite90/deploy-react-webpack-to-digital-ocean-with-nginx-and-github-b83d1cf4be0b
 - https://docs.microsoft.com/en-us/aspnet/web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
